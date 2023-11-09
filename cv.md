@@ -37,3 +37,26 @@ function multiply(a, b){
 }
 
 ```
+
+---
+
+#### Work experience
+
+I did not work in the IT specialty.
+Only private entrepreneur.
+
+---
+
+#### Courses:
+
+**HTML**
+
+**Stepik**
+
+---
+
+#### Languages:
+
+Native language - Russian
+
+English A1
