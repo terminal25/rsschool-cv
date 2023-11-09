@@ -19,3 +19,21 @@
 I accidentally stumbled upon web design and realized I enjoy it. Therefore, I decided to learn it and change my profession. I enjoy using Figma to create designs and I also have a passion for CSS. Additionally, I love solving puzzles and searching for information. In summary, I am a motivated individual with a passion for web design and problem-solving.
 
 ---
+
+#### Skills:
+
+- HTML
+- CSS
+
+---
+
+#### Code:
+
+Code example from [Codewars](https://www.codewars.com/)
+
+```
+function multiply(a, b){
+ return  a * b
+}
+
+```
