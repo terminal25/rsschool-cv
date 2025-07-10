@@ -1,44 +1,56 @@
+/* --- Global Reset & Base Styles --- */
+/* Устанавливает box-sizing: border-box для всех элементов,
+   чтобы padding и border включались в общую ширину/высоту элемента. */
+* {
+    box-sizing: border-box;
+}
+
+/* Скрывает горизонтальную прокрутку, если она появляется из-за переполнения.
+   Лучше решать проблему переполнения, но это может помочь в крайних случаях. */
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #5A3A8A;
-    background-color: #F8F0FF;
-    
+    color: #5A3A8A; /* Основной цвет текста */
+    background-color: #F8F0FF; /* Светло-фиолетовый фон страницы */
 }
-.body-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
+
+/* --- Main Page Wrapper --- */
+/* Основной контейнер, который центрирует все содержимое CV и ограничивает его ширину. */
 .page-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    box-shadow: 0 0 15px rgba(0,0,0,0.05);
-    background-color: #FFFFFF;
+    max-width: 1000px; /* Максимальная ширина CV */
+    margin: 0 auto;    /* Центрирование блока на странице */
+    box-shadow: 0 0 15px rgba(0,0,0,0.05); /* Легкая тень для визуального отделения */
+    background-color: #FFFFFF; /* Белый фон внутри CV */
 }
 
-.header-container,
-.content-container {
-    width: 90%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px 0;
+/* --- Content Container for Sections --- */
+/* Этот класс используется внутри каждой секции для добавления горизонтальных отступов
+   к содержимому, чтобы оно не прилипало к краям page-wrapper. */
+.container {
+    padding: 0 25px; /* 0px вертикальный отступ, 25px горизонтальный отступ */
 }
 
+/* --- Header Styles --- */
 .header {
-    background-color: #A78EC6;
-    color: #fff;
-    padding: 15px 0;
+    background-color: #A78EC6; /* Фиолетовый фон шапки */
+    color: #fff; /* Белый текст в шапке */
+    padding: 15px 0; /* Вертикальные отступы для содержимого шапки */
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Тень шапки */
 }
 
-.header p {
-    margin: 5px 0;
+.header-content p {
+    margin: 5px 0; /* Небольшие вертикальные отступы для параграфов */
     font-size: 1.1em;
 }
 
+/* --- Heading Styles --- */
 h1 {
     color: #5A3A8A;
     text-align: center;
@@ -59,108 +71,127 @@ h3 {
     margin-bottom: 15px;
 }
 
-.hero-section {
-    background-color: #FFFFFF;
+/* --- Section Padding --- */
+/* Общие вертикальные отступы для всех основных секций */
+section {
     padding: 50px 0;
-    border-bottom: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3; /* Разделитель между секциями */
 }
 
-.content-with-image {
+/* Отдельные цвета фона для секций для визуального разделения */
+.hero-section,
+.code-example-section {
+    background-color: #FFFFFF;
+}
+
+.skills-section,
+.projects-section,
+.education-section {
+    background-color: #F8F0FF; /* Светло-фиолетовый фон */
+}
+
+/* Убираем нижнюю границу у последней секции перед футером */
+.education-section {
+    border-bottom: none;
+}
+
+
+/* --- Hero Section (Photo & Intro) --- */
+.hero-inner { /* Контейнер для флекс-элементов в hero-section */
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
     align-items: center;
-    gap: 40px;
+    gap: 40px; /* Отступ между изображением и текстом */
 }
 
 .image-wrapper {
-    flex: 1;
-    min-width: 280px;
+    flex: 1 1 280px; /* flex-grow, flex-shrink, flex-basis (минимальная ширина для элемента) */
     text-align: center;
 }
 
 .image-wrapper img {
-    max-width: 100%;
+    max-width: 100%; /* Изображение не будет выходить за пределы своего контейнера */
     height: auto;
-    border-radius: 50%;
-    border: 5px solid #D0AEE4;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease-in-out;
+    border-radius: 50%; /* Круглое изображение */
+    border: 5px solid #D0AEE4; /* Фиолетовая рамка */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Тень изображения */
+    transition: transform 0.3s ease-in-out; /* Плавный эффект при наведении */
 }
 
 .image-wrapper img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Увеличение при наведении */
 }
 
 .text-wrapper {
-    flex: 2;
-    min-width: 320px;
+    flex: 2 1 320px; /* Текст занимает в два раза больше места, чем изображение */
     font-size: 1.1em;
     color: #5A3A8A;
 }
 
-.text-block-section {
-    background-color: #F8F0FF;
-    padding: 50px 0;
-}
-
-.text-block-section ul {
-    list-style-type: square;
+/* --- Lists Styling (Skills, Projects, Education, Languages) --- */
+ul {
+    list-style-type: square; /* Квадратные маркеры списка */
     margin-left: 25px;
     padding-left: 0;
 }
 
-.text-block-section ul li {
+ul li {
     margin-bottom: 8px;
     color: #5A3A8A;
 }
 
-.code-section {
-    background-color: #FFFFFF;
-    padding: 50px 0;
-    border-bottom: 1px solid #D3D3D3;
+ul li a {
+    color: #7B68EE; /* Цвет ссылок */
+    text-decoration: none;
 }
 
-.code-section pre {
-    background-color: #F0E6F0;
+ul li a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* --- Code Example Section --- */
+.code-example-section pre {
+    background-color: #F0E6F0; /* Светло-фиолетовый фон для блока кода */
     border: 1px solid #D3D3D3;
     border-radius: 5px;
     padding: 15px;
-    overflow-x: auto;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    overflow-x: auto; /* Добавляет горизонтальную прокрутку, если строка кода слишком длинная */
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* Моноширинный шрифт для кода */
     font-size: 0.9em;
     line-height: 1.4;
     color: #333;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    white-space: pre-wrap; /* Переносит длинные строки, если они содержат пробелы */
+    word-wrap: break-word; /* Принудительно переносит очень длинные слова/последовательности символов */
 }
 
-/* Стили для футера - теперь работают с новой структурой */
+/* --- Footer Styles --- */
 .footer {
-    background-color: #A78EC6;
-    color: #fff;
+    background-color: #A78EC6; /* Фиолетовый фон футера */
+    color: #fff; /* Белый текст футера */
     padding: 20px 0;
     font-size: 0.95em;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    text-align: center; 
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Тень футера */
+    text-align: center;
 }
 
-.footer-content-wrapper {
+.footer-content { /* Контейнер для содержимого футера */
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around; /* Распределяет элементы с пространством вокруг */
     align-items: center;
-    flex-wrap: wrap; 
-    max-width: 960px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+    flex-wrap: wrap; /* Позволяет элементам переноситься */
+    gap: 15px; /* Отступ между элементами футера */
 }
+
 .footer-img {
-  width: 50px;
+    width: 50px; /* Размер логотипов в футере */
+    height: auto;
 }
+
 .footer-link {
     display: flex;
     align-items: center;
     gap: 5px;
-    color: #D0AEE4;
+    color: #D0AEE4; /* Цвет ссылок в футере */
     text-decoration: none;
     font-weight: bold;
 }
@@ -170,9 +201,7 @@ h3 {
 }
 
 .footer-link img {
-    height: 40px; /* Размер картинок */
-    width: auto;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out; /* Эффект при наведении на логотипы */
 }
 
 .footer-link img:hover {
@@ -180,10 +209,13 @@ h3 {
 }
 
 .footer-year {
-    margin: 0; 
+    margin: 0;
     padding: 0;
+    /* flex-basis: 100px; */ /* Можно использовать, если нужно жестко задать базовую ширину */
+    flex-grow: 1; /* Позволяет ему растягиваться */
 }
 
+/* --- Button Styles (если будут добавлены) --- */
 button {
     background-color: #D0AEE4;
     color: #5A3A8A;
@@ -203,4 +235,93 @@ button:hover {
 
 button:active {
     transform: translateY(0);
+}
+
+
+/* --- Responsive Design (Media Queries) --- */
+
+/* Для экранов меньше 992px (типичные планшеты и меньше) */
+@media (max-width: 991px) {
+    .container {
+        padding: 0 20px; /* Немного уменьшаем горизонтальные отступы */
+    }
+
+    .hero-inner {
+        gap: 30px; /* Уменьшаем отступ между флекс-элементами */
+    }
+}
+
+/* Для экранов меньше 768px (типичные планшеты в портретном режиме и мобильные) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 15px; /* Еще уменьшаем горизонтальный отступ на мобильных */
+    }
+
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    /* Адаптация флекс-элементов в hero-section: располагаем в столбец */
+    .hero-inner {
+        flex-direction: column;
+        gap: 20px; /* Уменьшаем отступ */
+    }
+
+    .image-wrapper,
+    .text-wrapper {
+        min-width: unset; /* Сбрасываем min-width, чтобы они могли сжиматься */
+        width: 100%; /* Занимаем всю доступную ширину */
+        flex-basis: auto; /* Позволяет им быть более гибкими */
+    }
+
+    .image-wrapper img {
+        width: 70%; /* Уменьшаем размер изображения на мобильных */
+        max-width: 250px; /* Чтобы изображение не было слишком большим */
+    }
+
+    .text-wrapper {
+        font-size: 1em;
+    }
+
+    /* Элементы футера также выстраиваются в столбец */
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 15px; /* Уменьшаем отступы для футера */
+    }
+
+    .footer-year {
+        flex-basis: auto; /* Позволяем ему быть гибким */
+    }
+}
+
+/* Для очень маленьких экранов (смартфоны) */
+@media (max-width: 479px) {
+    .container {
+        padding: 0 10px; /* Еще меньше отступов */
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .image-wrapper img {
+        width: 80%;
+        max-width: 180px; /* Еще уменьшаем изображение */
+    }
+
+    .code-example-section pre {
+        padding: 10px; /* Меньший padding для блоков с кодом */
+        font-size: 0.8em;
+    }
 }
